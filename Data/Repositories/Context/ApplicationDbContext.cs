@@ -1,7 +1,7 @@
 ﻿using Biblioteca82.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Biblioteca82.Context
+namespace Biblioteca82.Data.Repositories.Context
 {
     public class ApplicationDbContext : DbContext
     {
@@ -27,7 +27,7 @@ namespace Biblioteca82.Context
 
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
-                Id= Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 UserName = "Emmanuel_Rojas",
                 Nombre = "Emmanuel",
                 Password = "password",

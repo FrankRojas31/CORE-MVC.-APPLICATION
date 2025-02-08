@@ -1,4 +1,4 @@
-﻿using Biblioteca82.Context;
+﻿using Biblioteca82.Data.Repositories.Context;
 using Biblioteca82.Services.IServices;
 using Biblioteca82.Services.Services;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +26,11 @@ namespace Biblioteca82.Services.RegisterService
         {
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IRolServices, RolServices>();
+        }
+
+        public static void AddRepository(IServiceCollection services)
+        {
+            
         }
     }
 }
