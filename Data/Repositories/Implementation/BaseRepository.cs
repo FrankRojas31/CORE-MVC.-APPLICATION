@@ -35,7 +35,7 @@ namespace Biblioteca82.Data.Repositories.Implementation
             await _context.Set<TEntity>().AddAsync(entity);
             var affectedRows = await _context.SaveChangesAsync();
 
-            bool result = affectedRows > 0 ? true : false;
+            bool result = affectedRows > 0;
 
             return result;
         }
@@ -45,7 +45,7 @@ namespace Biblioteca82.Data.Repositories.Implementation
             _context.Set<TEntity>().Update(entity);
             var affectedRows = await _context.SaveChangesAsync();
 
-            bool result = affectedRows > 0 ? true : false;
+            bool result = affectedRows > 0;
 
             return result;
 
@@ -56,7 +56,7 @@ namespace Biblioteca82.Data.Repositories.Implementation
             _context.Set<TEntity>().Remove(entity);
             var affectedRows = await _context.SaveChangesAsync();
 
-            bool result = affectedRows > 0 ? true : false;
+            bool result = affectedRows > 0;
 
             return result;
         }

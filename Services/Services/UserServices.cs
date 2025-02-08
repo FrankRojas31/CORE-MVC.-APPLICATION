@@ -1,4 +1,6 @@
 ﻿using Biblioteca82.Data.Repositories.Context;
+using Biblioteca82.Data.Repositories.Contracts;
+using Biblioteca82.Data.Repositories.Implementation;
 using Biblioteca82.Models.Domain;
 using Biblioteca82.Services.IServices;
 using Microsoft.EntityFrameworkCore;
@@ -8,22 +10,25 @@ namespace Biblioteca82.Services.Services
     public class UserServices : BaseServices<UserEntity>, IUserServices
     {
         private readonly ApplicationDbContext _context;
-        public UserServices(ApplicationDbContext context) : base(context)
+        private readonly IUserRepository _userRepository;
+        private readonly IRolRepository _rolRepository;
+        public UserServices(ApplicationDbContext context, IUserRepository userRepository, IRolRepository rolRepository) : base(userRepository)
         {
             _context = context;
+            _userRepository = userRepository;
+            _rolRepository = rolRepository;
         }
 
-        //Crear una lista para obtener a los usuarios.
         public async Task<List<UserEntity>> GetUsuarios()
         {
             try
             {
-                List<UserEntity> usersList = await _context.Usuarios.ToListAsync();
+                List<UserEntity> usersList = await _userRepository.GetAllAsync();
 
                 foreach (var userEntity in usersList)
                 {
 
-                    RolEntity rol = await _context.Roles.SingleOrDefaultAsync(x => x.Id == userEntity.IdRol);
+                    RolEntity rol = await _rolRepository.GetByIdAsync(userEntity.IdRol);
 
                     var verificar = (rol != null) ? userEntity.Rol = rol : userEntity.Rol = null;
 

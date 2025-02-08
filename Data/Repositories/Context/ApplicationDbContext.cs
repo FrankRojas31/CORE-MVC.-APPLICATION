@@ -14,11 +14,10 @@ namespace Biblioteca82.Data.Repositories.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var idAdmin = Guid.NewGuid();
 
             var rolAdmin = new RolEntity
             {
-                Id = idAdmin,
+                Id = 1,
                 Nombre = "Admin",
                 EsBorrado = false
             };
@@ -27,11 +26,11 @@ namespace Biblioteca82.Data.Repositories.Context
 
             modelBuilder.Entity<UserEntity>().HasData(new UserEntity
             {
-                Id = Guid.NewGuid(),
+                Id = 1,
                 UserName = "Emmanuel_Rojas",
                 Nombre = "Emmanuel",
                 Password = "password",
-                IdRol = idAdmin,
+                IdRol = rolAdmin.Id,
                 EsBorrado = false
             });
         }

@@ -1,4 +1,6 @@
 ﻿using Biblioteca82.Data.Repositories.Context;
+using Biblioteca82.Data.Repositories.Contracts;
+using Biblioteca82.Data.Repositories.Implementation;
 using Biblioteca82.Services.IServices;
 using Biblioteca82.Services.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ namespace Biblioteca82.Services.RegisterService
 
             #region Inyectar Servicios
             AddServices(services);
+            AddRepository(services);
             #endregion
 
             return services;
@@ -30,7 +33,8 @@ namespace Biblioteca82.Services.RegisterService
 
         public static void AddRepository(IServiceCollection services)
         {
-            
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRolRepository, RolRepository>();
         }
     }
 }

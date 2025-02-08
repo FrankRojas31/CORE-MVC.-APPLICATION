@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -15,7 +14,8 @@ namespace Biblioteca82.Migrations
                 name: "Tbl_Rol",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EsBorrado = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -28,11 +28,12 @@ namespace Biblioteca82.Migrations
                 name: "Tbl_Usuarios",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdRol = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdRol = table.Column<int>(type: "int", nullable: false),
                     EsBorrado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -49,12 +50,12 @@ namespace Biblioteca82.Migrations
             migrationBuilder.InsertData(
                 table: "Tbl_Rol",
                 columns: new[] { "Id", "EsBorrado", "Nombre" },
-                values: new object[] { new Guid("070ed413-0adf-4f5c-bb9b-cf49fbe4fb6f"), false, "Admin" });
+                values: new object[] { 1, false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Tbl_Usuarios",
                 columns: new[] { "Id", "EsBorrado", "IdRol", "Nombre", "Password", "UserName" },
-                values: new object[] { new Guid("4a995251-8d3b-4518-b5f7-333774af5603"), false, new Guid("070ed413-0adf-4f5c-bb9b-cf49fbe4fb6f"), "Emmanuel", "password", "Emmanuel_Rojas" });
+                values: new object[] { 1, false, 1, "Emmanuel", "password", "Emmanuel_Rojas" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tbl_Usuarios_IdRol",

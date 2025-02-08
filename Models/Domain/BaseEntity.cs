@@ -6,7 +6,8 @@ namespace Biblioteca82.Models.Domain
     public abstract class BaseEntity
     {
         [Key, Column(Order = 0)]
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public bool EsBorrado { get; set; }
     }
 }

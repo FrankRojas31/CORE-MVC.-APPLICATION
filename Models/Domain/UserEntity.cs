@@ -12,7 +12,7 @@ namespace Biblioteca82.Models.Domain
         public string Password { get; set; }
 
         [ForeignKey(nameof(Rol))]
-        public Guid IdRol { get; set; }
+        public int IdRol { get; set; }
         public virtual RolEntity Rol { get; set; }
     }
 }
