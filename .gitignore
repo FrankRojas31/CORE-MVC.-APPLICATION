@@ -1,0 +1,106 @@
+# Ignora archivos binarios y de compilación
+[Bb]in/
+[Oo]bj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.suo
+*.user
+*.userosscache
+*.nupkg
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Ignora carpetas de dependencias y paquetes NuGet
+[Dd]ebug/
+[Rr]elease/
+packages/
+.nuget/
+artifacts/
+
+# Ignora archivos de configuración local
+appsettings.Development.json
+appsettings.Local.json
+*.local
+
+# Ignora archivos de usuario y de configuración de IDE
+.vs/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Ignora archivos de logs y temporales
+[Tt]emp/
+*.log
+*.log.*
+*.tmp
+
+# Ignora archivos de herramientas y scripts
+tools/
+scripts/
+*.ps1
+*.cmd
+*.bat
+
+# Ignora archivos de Docker
+[Dd]ockerfile
+docker-compose.*
+.dockerignore
+
+# Ignora archivos de pruebas y cobertura
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+.coverage
+
+# Ignora archivos de Azure y servicios en la nube
+.azure/
+*.pubxml
+*.publishsettings
+
+# Ignora archivos de Node.js (si usas frontend con Node.js)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignora archivos de frontend (si usas frameworks como Angular, React, etc.)
+dist/
+build/
+out/
+.cache/
+
+# Ignora archivos de IDE específicos
+.idea/
+*.iml
+*.ipr
+*.iws
+*.sln.iml
+
+# Ignora archivos de Rider (JetBrains)
+.idea/
+*.sln.iml
+
+# Ignora archivos de Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Ignora archivos de macOS
+.DS_Store
+
+# Ignora archivos de Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ignora archivos de Linux
+*~
+*.swp
+*.swo

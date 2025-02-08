@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Biblioteca82</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Biblioteca82.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="bg-dark text-white p-3 min-vh-100" style="width: 250px;">
+            <h4 class="text-center">Biblioteca82</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white @(Context.Request.Path == "/Home" ? "active bg-secondary" : "")" href="/Home">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white @(Context.Request.Path == "/User" ? "active bg-secondary" : "")" href="/User">
+                        <i class="fas fa-book"></i> Usuarios
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="flex-grow-1 d-flex flex-column">
+            <!-- Navbar con Hora -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-3 d-flex justify-content-between align-items-center">
+                <span class="navbar-brand m-0">@ViewData["Title"]</span>
+                <span id="current-time" class="fw-bold"></span>
+            </nav>
+
+            <!-- Breadcrumb -->
+            <nav class="navbar navbar-expand-lg bg-secondary bg-opacity-10 shadow-sm px-2">
+                <div class="container-fluid">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            @if (ViewData["Breadcrumb"] != null)
+                            {
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Breadcrumb"]</li>
+                            }
+                        </ol>
+                    </nav>
+                </div>
+            </nav>
+
+
+            <!-- Contenido -->
+            <main role="main" class="container-fluid p-4">
+                @RenderBody()
+            </main>
+        </div>
+
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString();
+            document.getElementById('current-time').textContent = formattedTime;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

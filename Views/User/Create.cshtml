@@ -1,0 +1,58 @@
+﻿@model UserWithRolVM
+
+@{
+    Layout = "_Layout_Dashboard";
+    ViewData["Title"] = "Dashboard";
+    ViewData["Breadcrumb"] = "Crear Usuario";
+}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="mb-0"><strong>Crear Usuario</strong></h2>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="User.Nombre" class="form-label">Nombre</label>
+                            <input asp-for="User.Nombre" class="form-control" placeholder="Ingresa el nombre" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="User.UserName" class="form-label">Usuario</label>
+                            <input asp-for="User.UserName" class="form-control" placeholder="Ingresa el usuario" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="User.Password" class="form-label">Contraseña</label>
+                            <input asp-for="User.Password" class="form-control" placeholder="Ingresa la contraseña" type="password" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="User.IdRol" class="form-label">Rol</label>
+                            <select asp-for="User.IdRol" class="form-select" required>
+                                <option value="">Selecciona un rol</option>
+                                @foreach (var rol in Model.Roles)
+                                {
+                                    <option value="@rol.Id">@rol.Nombre</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-person-fill"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-3">
+                        <a asp-controller="User" asp-action="Index" class="btn btn-secondary">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
